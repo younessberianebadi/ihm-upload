@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Authentification</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}">
+    <style>
+      html, body {
+      display: flex;
+      justify-content: center;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 15px;
+      background-color: #ccccff;
+      }
+      form {
+      color: #808080;
+      border: 2px solid white;
+      padding: 10px;
+      border-radius: 8px;
+      position: relative;
+      top: 10%;
+      background-color: white;
+      width: 70%;
+      }
+      input[type=text], input[type=password] {
+      width: 100%;
+      padding: 16px 8px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      }
+      button {
+      background-color: #000099;
+      color: white;
+      padding: 14px 0;
+      margin: 10px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      }
+      h1 {
+      text-align:center;
+      fone-size:18;
+      }
+      h4{
+        text-align:center;
+      }
+      button:hover {
+      opacity: 0.8;
+      }
+      .formcontainer {
+      text-align: left;
+      margin: 24px 50px 12px;
+      }
+      .container {
+      padding: 16px 0;
+      text-align:left;
+      }
+      span.psw {
+      float: right;
+      padding-top: 0;
+      padding-right: 15px;
+      }
+      /* Change styles for span on extra small screens */
+      @media screen and (max-width: 300px) {
+      span.psw {
+      display: block;
+      float: none;
+      }
+    </style>
+</head>
+<body>
+<form th:action="@{/login}" method="post">
+    <br>
+    <span style="display:table; margin:auto;"><img th:src="@{/images/logo.png}" alt="" height="48"></span>
+    <h1>Maroc Telecom</h1>
+    <h4>Entrez votre nom d'utilisateur et mot de passe</h4>
+    <div class="formcontainer">
+        <hr/>
+        <div class="container">
+            <div th:if="${param.error}">
+                <div style="padding: 10px; background-color: #f44336; color: white;" class="alert3">
+                Nom d'utilisateur ou mot de passe invalid!
+                </div>
+                <br>
+            </div>
+            <div th:if="${param.logout}">
+                <div style="padding: 10px; background-color: green; color: white;" class="alert3">
+                    Vous &ecirc;tes d&eacute;connect&eacute;s!
+                </div>
+                <br>
+            </div>
+            <label for="username"><strong>Nom d'utilisateur</strong></label>
+            <input type="text" placeholder="Nom d'utilisateur" id="username" name="username" required>
+            <label for="password"><strong>Mot de passe</strong></label>
+            <input type="password" placeholder="Mot de passe" id="password" name="password" required>
+        </div></div>
+        <button type="submit">Se connecter</button>
+</form>
+</body>
+</html>
